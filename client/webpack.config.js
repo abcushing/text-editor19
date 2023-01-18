@@ -23,7 +23,9 @@ module.exports = () => {
         title: "Webpack Plugin",
       }),
       new WebpackPwaManifest(),
-      new InjectManifest(),
+      new InjectManifest({
+        swSrc: "./src-sw.js",
+      }),
       // new MiniCssExtractPlugin(),
       // new WorkboxPlugin.GenerateSW(),
     ],
