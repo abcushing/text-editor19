@@ -22,9 +22,27 @@ module.exports = () => {
         template: "./index.html",
         title: "Webpack Plugin",
       }),
-      new WebpackPwaManifest(),
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: "Contact Cards",
+        short_name: "Contact",
+        description: "Never forget your text!",
+        background_color: "#225ca3",
+        theme_color: "#225ca3",
+        start_url: "./",
+        publicPath: "./",
+        icons: [
+          {
+            src: path.resolve("src/images/logo.png"),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join("assets", "icons"),
+          },
+        ],
+      }),
       new InjectManifest({
         swSrc: "./src-sw.js",
+        swDest: "sw.js",
       }),
       // new MiniCssExtractPlugin(),
       // new WorkboxPlugin.GenerateSW(),
